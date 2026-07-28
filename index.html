@@ -17,6 +17,7 @@
     --ink:#3e668f;
     --ink-soft:#5a7c9e;
     --teal:#aab4e7;
+    --sky:#81A9CC;
     --white:#FFFDF9;
     --text:#39505f;
     --radius-lg: 28px;
@@ -106,7 +107,7 @@
     display:flex; align-items:center; justify-content:center;
   }
   .hero-art img{
-    width:100%; max-width:380px;
+    width:100%; max-width:260px;
     filter:drop-shadow(0 18px 30px rgba(217,138,31,0.25));
   }
 
@@ -228,7 +229,7 @@
     border:1px solid rgba(32,48,74,0.08);
   }
   .area-map{
-    background:var(--coral); border-radius:var(--radius-lg);
+    background:linear-gradient(160deg, var(--sky), var(--teal)); border-radius:var(--radius-lg);
     aspect-ratio:4/3; position:relative; overflow:hidden;
     display:flex; align-items:center; justify-content:center;
   }
@@ -276,6 +277,10 @@
     font-size:0.85rem; color:var(--ink-soft); font-style:italic; margin-top:6px;
   }
 
+  footer .footer-tagline{
+    font-family:'Caveat', cursive; font-size:1.3rem; font-weight:600;
+    color:var(--sun); margin:0 0 10px; opacity:0.9;
+  }
   footer{
     text-align:center; padding:30px 24px 40px;
     color:var(--ink-soft); font-size:0.85rem;
@@ -320,7 +325,7 @@
 <section class="hero" id="top">
   <div class="hero-copy">
     <span class="eyebrow">Bradburn, Broomfield &amp; the North Metro, CO</span>
-    <h1>Warm, watchful <em>pet care</em>&nbsp;— right in your neighborhood.</h1>
+    <h1>A little sunshine <em>while you're away</em>&nbsp;— right in your neighborhood.</h1>
     <p class="lede">Walks, drop-in visits, and overnight stays from someone who treats your home and your pet with the same care you would.</p>
     <div class="hero-ctas">
       <a class="btn btn-primary" href="#contact">Book a consult</a>
@@ -348,23 +353,23 @@
     <div class="card">
       <div class="icon">🐾</div>
       <h3>Walks</h3>
-      <p>A dedicated walk around the neighborhood, sized to your dog's energy and pace — rain, shine, or snow.</p>
+      <p>A dedicated walk around the neighborhood, sized to your dog's energy and pace, rain, shine, or snow.</p>
     </div>
     <div class="card">
       <div class="icon">🏡</div>
       <h3>Drop-in visits</h3>
-      <p>Feeding, fresh water, litter box scooping, a little playtime, and a full report — while you're at work or out for the day.</p>
+      <p>Feeding, fresh water, litter box scooping, a little playtime, and a full report, whether you're at work or out for the day.</p>
     </div>
     <div class="card">
       <div class="icon">🌙</div>
       <h3>Overnights</h3>
-      <p>Someone stays over so your pets keep their routine and your home stays lived-in — mail, lights, and all — while you're away.</p>
+      <p>Someone stays over so your pets keep their routine and your home stays lived-in (mail, lights, and all) while you're away.</p>
     </div>
     <div class="card soon">
       <span class="badge-soon">Coming soon</span>
       <div class="icon">🦎</div>
       <h3>Reptile care</h3>
-      <p>Reptile sitting is on the way as I continue building hands-on experience — reach out if you'd like to be notified when it launches.</p>
+      <p>Reptile sitting is on the way as I continue building hands-on experience. Reach out if you'd like to be notified when it launches.</p>
     </div>
   </div>
 </section>
@@ -373,7 +378,7 @@
   <div class="section-head">
     <span class="eyebrow">Rates</span>
     <h2>Simple, upfront pricing</h2>
-    <p>No hidden fees — just clear rates for cats and dogs alike.</p>
+    <p>No hidden fees. Just clear rates for cats and dogs alike.</p>
   </div>
   <div class="price-table">
     <div class="price-row">
@@ -397,12 +402,12 @@
       <div class="price-amt">$95/night</div>
     </div>
   </div>
-  <p class="price-note">Holiday surcharge, extra-pet, and distance rates discussed at booking. Portal &amp; online booking coming soon via Precise Pet Care — reach out directly for now.</p>
+  <p class="price-note">Holiday surcharge, extra-pet, and distance rates discussed at booking. Portal &amp; online booking coming soon via Precise Pet Care. Reach out directly for now.</p>
 </section>
 
 <section class="about" id="about">
-  <div class="about"> 
-		<img src="SunPatchpfp.png"/>
+  <div class="about-art photo-placeholder">
+    <img src="SunPatchpfp.png" />
   </div>
   <div class="about-copy">
     <span class="eyebrow">A little about me</span>
@@ -471,7 +476,7 @@
         <div class="value">Bradburn, Broomfield &amp; North Metro</div>
       </div>
     </div>
-    <p class="note">Existing clients: online client portal is on its way — for now, reach out directly by phone, text, or email.</p>
+    <p class="note">Existing clients: online client portal is on its way. For now, reach out directly by phone, text, or email.</p>
   </div>
 </section>
 
@@ -482,6 +487,7 @@
       <path d="M50 15 C 60 15, 68 23, 68 35 C 68 47, 58 52, 50 52 C 42 52, 34 46, 34 38 C 34 31, 40 27, 45 30 C 49 32, 49 38, 44 39" stroke="#20304A" stroke-width="5" stroke-linecap="round"/>
     </svg>
   </div>
+  <p class="footer-tagline">A little sunshine while you're away.</p>
   &copy; 2026 Sun Patch Pets · Broomfield, Colorado
 </footer>
 
