@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sun Patch loading pulse — demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Nunito+Sans:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFFBF5;
+    --coral:#E89B8A;
+    --lilac:#aab4e7;
+    --gold:#ffdb83;
+    --ink:#3e668f;
+  }
+  body{
+    margin:0; min-height:100vh; background:var(--cream);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:26px;
+    font-family:'Nunito Sans', sans-serif;
+  }
+  h1{font-family:'Caveat',cursive; color:var(--ink); font-size:1.8rem; margin:0;}
+  .loader-wrap{position:relative; width:150px; height:150px;}
+
+  /* Base paw mark, faint and static */
+  .base-mark{
+    position:absolute; inset:0; opacity:0.9;
+  }
+  .base-mark img{width:100%; height:100%; object-fit:contain;}
+
+  /* Three pulsing rings traced outward from the heart, staggered */
+  .ring{
+    position:absolute; inset:0;
+    border-radius:50%;
+    border:4px solid transparent;
+    animation: pulseRing 1.8s ease-out infinite;
+  }
+  .ring.r1{border-color:var(--coral); animation-delay:0s;}
+  .ring.r2{border-color:var(--lilac); animation-delay:0.35s;}
+  .ring.r3{border-color:var(--gold); animation-delay:0.7s;}
+
+  @keyframes pulseRing{
+    0%   { transform:scale(0.55); opacity:0; }
+    15%  { opacity:0.9; }
+    100% { transform:scale(1.35); opacity:0; }
+  }
+
+  /* Gentle heartbeat on the mark itself */
+  .base-mark{
+    animation: gentleBeat 1.8s ease-in-out infinite;
+  }
+  @keyframes gentleBeat{
+    0%, 100% { transform:scale(1); }
+    50%      { transform:scale(1.05); }
+  }
+
+  p.caption{color:var(--ink); opacity:0.7; font-size:0.9rem; margin:0;}
+</style>
+</head>
+<body>
+
+  <h1>A little sunshine, loading...</h1>
+
+  <div class="loader-wrap">
+    <div class="ring r1"></div>
+    <div class="ring r2"></div>
+    <div class="ring r3"></div>
+    <div class="base-mark">
+      <img src="ShorthandLogo.png" alt="Sun Patch Pet Care loading">
+    </div>
+  </div>
+
+  <p class="caption">Drop this markup anywhere you need a loading state.</p>
+
+</body>
+</html>
