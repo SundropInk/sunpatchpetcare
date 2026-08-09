@@ -232,28 +232,7 @@
   .about h2{font-size:2.4rem; margin:0 0 14px;}
   .about p{color:var(--ink-soft); margin:0 0 14px;}
   .about p:last-child{margin-bottom:0;}
-
-  .area{
-    padding:0 24px 90px;
-    max-width:1080px; margin:0 auto;
-    display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;
-  }
-  .area-copy h2{font-size:2.4rem; margin:0 0 14px;}
-  .area-copy p{color:var(--ink-soft); margin:0 0 20px;}
-  .pill-row{display:flex; flex-wrap:wrap; gap:10px;}
-  .area-note{margin-top:16px; font-size:0.88rem; color:var(--ink-soft); font-style:italic;}
-  .pill{
-    background:var(--cream-2); color:var(--ink);
-    padding:9px 16px; border-radius:999px; font-weight:700; font-size:0.9rem;
-    border:1px solid rgba(32,48,74,0.08);
-  }
-  .area-map{
-    background:linear-gradient(160deg, var(--sky), var(--teal)); border-radius:var(--radius-lg);
-    aspect-ratio:4/3; position:relative; overflow:hidden;
-    display:flex; align-items:center; justify-content:center;
-  }
-  .area-map svg{width:88%; height:88%; opacity:0.95;}
-
+ 
   .trust{
     background:var(--ink); color:var(--cream);
     padding:52px 24px;
@@ -553,12 +532,10 @@
       <span class="pill">Crown Pointe</span>
       <span class="pill">Miramonte</span>
       <span class="pill">Lockamora</span>
-      <span class="pill">Sunrise</span>
       <span class="pill">Uplands (by appt.)</span>
     </div>
     <p class="area-note">Regular route: Standley Lake out to roughly 80th Ave south and Kipling Pkwy east, plus the Sheridan corridor between. Text (720) 584-6059 if you're just outside these lines &mdash; happy to check.</p>
   </div>
-  <
 
 <div class="trust">
   <div class="trust-inner">
@@ -620,32 +597,5 @@
   });
 </script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-<script>
-  const fuelMap = L.map('fuelMap', { scrollWheelZoom: false }).setView([39.8836, -105.1372], 11);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors',
-    maxZoom: 14
-  }).addTo(fuelMap);
-
-  L.circle([39.8836, -105.1372], {
-    radius: 8000,
-    color: '#D9806E',
-    fillColor: '#ffdb83',
-    fillOpacity: 0.35,
-    weight: 2
-  }).addTo(fuelMap);
-
-  L.circle([39.8836, -105.1372], {
-    radius: 16000,
-    color: '#8a5f8f',
-    fillColor: '#E89B8A',
-    fillOpacity: 0.18,
-    weight: 2
-  }).addTo(fuelMap);
-
-  L.marker([39.8836, -105.1372]).addTo(fuelMap)
-    .bindPopup('Standley Lake &mdash; service area center point');
-</script>
 </body>
 </html>
