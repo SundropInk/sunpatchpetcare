@@ -321,6 +321,19 @@
     .contact h2{font-size:2.2rem;}
     .contact-card{padding:30px 22px;}
   }
+
+  /* Drifting paw clouds behind the hero */
+  .sky{position:relative; overflow:hidden;}
+  .sky .hero{position:relative; z-index:1;}
+  .pcloud{position:absolute; z-index:0; left:-120px; width:80px; height:80px; pointer-events:none; animation:pdrift 40s linear infinite;}
+  .pcloud.p1{top:30px; color:var(--teal); opacity:.35; animation-duration:44s;}
+  .pcloud.p2{top:190px; width:56px; height:56px; color:var(--sky); opacity:.28; animation-duration:60s; animation-delay:-25s;}
+  .pcloud.p3{top:80px; width:100px; height:100px; color:var(--sun); opacity:.35; animation-duration:76s; animation-delay:-50s;}
+  .pcloud.p4{top:330px; width:64px; height:64px; color:var(--teal); opacity:.25; animation-duration:52s; animation-delay:-12s;}
+  @keyframes pdrift{to{transform:translateX(calc(100vw + 260px)) rotate(8deg);}}
+  @media (prefers-reduced-motion:reduce){
+    .pcloud{animation:none;} .pcloud.p1{left:6%;} .pcloud.p2{left:88%;} .pcloud.p3{left:92%; top:60px;} .pcloud.p4{left:3%;}
+  }
 </style>
 <script type="application/ld+json">
 {
@@ -423,6 +436,12 @@
 </header>
 <div class="gingham"></div>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="pawcloud" viewBox="0 0 64 64"><g fill="currentColor"><circle cx="32" cy="43" r="11"/><circle cx="21" cy="47" r="9"/><circle cx="43" cy="47" r="9"/><circle cx="32" cy="51" r="9"/><circle cx="12" cy="29" r="6.5"/><circle cx="24" cy="18" r="7.5"/><circle cx="40" cy="18" r="7.5"/><circle cx="52" cy="29" r="6.5"/></g></symbol></svg>
+<div class="sky">
+  <svg class="pcloud p1" aria-hidden="true"><use href="#pawcloud"/></svg>
+  <svg class="pcloud p2" aria-hidden="true"><use href="#pawcloud"/></svg>
+  <svg class="pcloud p3" aria-hidden="true"><use href="#pawcloud"/></svg>
+  <svg class="pcloud p4" aria-hidden="true"><use href="#pawcloud"/></svg>
 <section class="hero" id="top">
   <div class="hero-copy">
     <span class="eyebrow">Standley Lake &amp; the Sheridan Corridor, CO</span>
@@ -438,6 +457,7 @@
     <img src="SunPatchLogoMain.png" alt="Sun Patch Pet Care — a sleeping dog under a sun spiral">
   </div>
 </section>
+</div>
 
 <div class="divider">
   <img src="ShorthandLogo.png" alt="Sun Patch Pet Care paw mark">
@@ -501,7 +521,7 @@
       <div class="price-amt">+$15</div>
     </div>
   </div>
-  <p class="price-note">Drop-ins are a 30-minute minimum, twice daily for all dogs, 3-pet max ($3/extra pet). Fuel surcharge: +$2 (under 15 min) / +$4 (15&ndash;30 min). Visits outside the standard service area: +$5 per 15 min. Existing clients can book directly through the <a href="login.html" style="color:var(--coral-deep); font-weight:700;">Precise Pet Care client portal</a>. New to Sun Patch? <a href="https://calendar.app.google/UXLNSSb8EbuJSYRe6" target="_blank" rel="noopener" style="color:var(--coral-deep); font-weight:700;">Book a consult call</a> to get started.</p>
+  <p class="price-note">Drop-ins are a 30-minute minimum, twice daily for all dogs, 3-pet max ($3/extra pet). Fuel surcharge: +$2 (under 15 min) / +$4 (15&ndash;30 min). Visits outside the standard service area: +$5 per 15 min. Full online booking is coming soon via Precise Pet Care &mdash; in the meantime, <a href="https://calendar.app.google/UXLNSSb8EbuJSYRe6" target="_blank" rel="noopener" style="color:var(--coral-deep); font-weight:700;">book a consult call</a> to get started.</p>
 
 </section>
 
@@ -541,6 +561,7 @@
     </div>
     <p class="area-note">Regular route: Standley Lake out to roughly 80th Ave south and Kipling Pkwy east, plus the Sheridan corridor between. Text (720) 584-6059 if you're just outside these lines &mdash; happy to check.</p>
   </div>
+</section>
 
 <div class="trust">
   <div class="trust-inner">
