@@ -390,6 +390,30 @@
   .note-small{margin-top:24px; font-size:0.85rem; color:var(--ink-soft);}
   @media (max-width:640px){ .field-row{grid-template-columns:1fr;} .resource-item{flex-direction:column; align-items:flex-start;} }
 
+
+  /* Floating pricing widget */
+  .pw{position:fixed; right:16px; bottom:16px; z-index:50; font-size:0.9rem;}
+  .pw-tab{
+    display:flex; align-items:center; gap:6px; cursor:pointer;
+    background:var(--coral); color:#1a3a4a; border:none; border-radius:999px;
+    padding:11px 18px; font:inherit; font-weight:700;
+    box-shadow:0 6px 18px rgba(62,102,143,0.28);
+  }
+  .pw-card{
+    display:none; width:min(320px, calc(100vw - 32px)); margin-bottom:10px;
+    background:var(--white); border:1px solid rgba(62,102,143,0.15);
+    border-radius:var(--radius-md); padding:16px 18px;
+    box-shadow:0 12px 30px rgba(62,102,143,0.22);
+    max-height:calc(100vh - 110px); overflow-y:auto;
+  }
+  .pw.open .pw-card{display:block;}
+  .pw-card h3{margin:0 0 8px; font-size:1.05rem; color:var(--coral-deep);}
+  .pw-row{display:flex; justify-content:space-between; gap:12px; padding:7px 0; border-bottom:1px solid rgba(232,155,138,0.25); color:var(--ink);}
+  .pw-row small{display:block; color:var(--ink-soft); font-size:0.76rem;}
+  .pw-row b{color:var(--coral-deep); white-space:nowrap;}
+  .pw-sub{margin:10px 0 4px; font-weight:700; font-size:0.8rem; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em;}
+  .pw-card ul{margin:0; padding-left:18px; color:var(--ink-soft); font-size:0.82rem; line-height:1.6;}
+  .pw-card a{color:var(--coral-deep); font-weight:700;}
 </style>
 </head>
 <body>
@@ -474,6 +498,23 @@
       <label for="pets">Tell me about your pet(s)</label>
       <textarea id="pets" name="pets" placeholder="Names, species, breed, and anything I should know"></textarea>
     </div>
+    <div class="field">
+      <label for="referral">How did you hear about Sun Patch?</label>
+      <select id="referral" name="referral">
+        <option value="">Select one (optional)</option>
+        <option>Business card</option>
+        <option>Word of mouth</option>
+        <option>Nextdoor</option>
+        <option>Rover</option>
+        <option>Bark</option>
+        <option>Google search</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="field" id="referrerField" style="display:none;">
+      <label for="referrer">Who referred you?</label>
+      <input type="text" id="referrer" name="referrer" placeholder="So I can say thank you!">
+    </div>
     <button type="submit" class="submit-btn" id="submitBtn">Send Request</button>
   </form>
   <p class="note-small" id="formNote">Prefer to call or text instead? Reach me at (720) 584-6059.</p>
@@ -508,13 +549,52 @@ document.getElementById('interestForm').addEventListener('submit', function(e){
   });
 });
 </script>
+<script>
+(function(){
+  var sel = document.getElementById('referral'), box = document.getElementById('referrerField');
+  sel.addEventListener('change', function(){ box.style.display = sel.value === 'Word of mouth' ? '' : 'none'; });
+  // Business card QR links to interest.html?src=card
+  try {
+    if (new URLSearchParams(location.search).get('src') === 'card') sel.value = 'Business card';
+  } catch(e){}
+})();
+</script>
+
+<div class="pw" id="pricingWidget">
+  <div class="pw-card" id="pwCard" role="region" aria-label="Pricing">
+    <h3>Pricing at a glance</h3>
+    <div class="pw-row"><span>Cat &amp; small pet visit<small>20 min</small></span><b>$20</b></div>
+    <div class="pw-row"><span>Drop-in / walk<small>30 min</small></span><b>$30</b></div>
+    <div class="pw-row"><span>Extra time<small>per additional 15 min</small></span><b>+$6</b></div>
+    <div class="pw-row"><span>Evening / night sit<small>7pm&ndash;7am</small></span><b>$85</b></div>
+    <div class="pw-row"><span>Holiday<small>per day</small></span><b>+$15</b></div>
+    <p class="pw-sub">Possible add-ons</p>
+    <ul>
+      <li>Fuel: +$2 (under 15 min away), +$4 (15&ndash;30 min)</li>
+      <li>Out of area: +$5 per 15 min</li>
+      <li>Extra pets: +$3 each past 3</li>
+    </ul>
+    <p style="margin:10px 0 0; font-size:0.8rem;"><a href="index.html#pricing">See full pricing &rarr;</a></p>
+  </div>
+  <button type="button" class="pw-tab" id="pwTab" aria-expanded="false" aria-controls="pwCard">&#128176; Pricing</button>
+</div>
+<script>
+(function(){
+  var w = document.getElementById('pricingWidget'), t = document.getElementById('pwTab');
+  t.addEventListener('click', function(){
+    var open = w.classList.toggle('open');
+    t.setAttribute('aria-expanded', open);
+    t.innerHTML = open ? '&times; Close' : '&#128176; Pricing';
+  });
+})();
+</script>
 <div class="gingham"></div>
 <footer>
   <div class="paw">
     <img src="ShorthandLogo.png" alt="Sun Patch Pet Care paw mark">
   </div>
   <p class="footer-tagline">A little sunshine while you're away.</p>
-  &copy; 2026 Sun Patch Pet Care &middot; Broomfield, Colorado
+  &copy; 2026 Sun Patch Pet Care
 </footer>
 <script>
   document.addEventListener('click', function(e){

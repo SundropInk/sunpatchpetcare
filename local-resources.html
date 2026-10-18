@@ -390,6 +390,28 @@
   .note-small{margin-top:24px; font-size:0.85rem; color:var(--ink-soft);}
   @media (max-width:640px){ .field-row{grid-template-columns:1fr;} .resource-item{flex-direction:column; align-items:flex-start;} }
 
+
+  /* Local resources accordion */
+  .lr-jump{display:flex; flex-wrap:wrap; gap:8px; align-items:center; justify-content:center; margin:0 0 24px;}
+  .lr-jump span{font-weight:700; color:var(--ink-soft); font-size:0.9rem;}
+  .lr-jump a{
+    padding:6px 14px; border-radius:999px; text-decoration:none; font-size:0.88rem; font-weight:700;
+    background:var(--cream-2); color:var(--ink); border:1px solid rgba(217,128,110,0.3);
+  }
+  .lr-jump a:hover{background:var(--coral); color:#1a3a4a;}
+  .lr-item{border:1px solid rgba(62,102,143,0.14); border-radius:var(--radius-md); margin-bottom:14px; background:var(--white); scroll-margin-top:90px;}
+  .lr-item summary{
+    list-style:none; cursor:pointer; display:flex; align-items:center; gap:12px;
+    padding:16px 20px; font-weight:700; font-size:1.2rem; color:var(--coral-deep);
+  }
+  .lr-item summary::-webkit-details-marker{display:none;}
+  .lr-icon{font-size:1.5rem; line-height:1;}
+  .lr-title{flex:1;}
+  /* .lr-chev is the paw-cloud arrow; swap or animate it here */
+  .lr-chev{width:30px; height:30px; color:var(--teal); transition:transform .3s, color .3s;}
+  .lr-item[open] .lr-chev{color:var(--ink-soft); transform:translateY(-3px) rotate(-8deg);}
+  @media (prefers-reduced-motion:reduce){.lr-chev{transition:none}}
+  .lr-body{padding:0 22px 20px;}
 </style>
 </head>
 <body>
@@ -428,10 +450,14 @@
   <p>First aid basics, seasonal care tips, and a few favorite local spots &mdash; because good pet care goes beyond just walks and visits.</p>
 </div>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="pawcloud" viewBox="0 0 64 64"><g fill="currentColor"><circle cx="32" cy="43" r="11"/><circle cx="21" cy="47" r="9"/><circle cx="43" cy="47" r="9"/><circle cx="32" cy="51" r="9"/><circle cx="12" cy="29" r="6.5"/><circle cx="24" cy="18" r="7.5"/><circle cx="40" cy="18" r="7.5"/><circle cx="52" cy="29" r="6.5"/></g></symbol></svg>
 <div class="panel panel-wide">
 
-  <div style="margin-bottom:32px;">
-    <h2 style="color:var(--coral-deep); font-size:1.4rem; margin:0 0 10px;">Pet First Aid Basics</h2>
+  <nav class="lr-jump" aria-label="Jump to section"><span>Jump to:</span><a href="#firstaid">🩹 First Aid</a><a href="#seasonal">🍂 Seasonal</a><a href="#areas">🐾 Areas</a><a href="#shops">🛍️ Shops</a><a href="#trainers">🎾 Trainers</a></nav>
+
+  <details class="lr-item" id="firstaid" open>
+    <summary><span class="lr-icon" aria-hidden="true">🩹</span><span class="lr-title">Pet First Aid Basics</span><svg class="lr-chev" aria-hidden="true"><use href="#pawcloud"/></svg></summary>
+    <div class="lr-body">
     <p style="margin:0 0 10px; color:var(--ink-soft); font-size:0.9rem;">Not a substitute for veterinary care &mdash; when in doubt, call your vet or an emergency animal hospital right away.</p>
     <ul style="margin:0; padding-left:20px; color:var(--ink); line-height:1.7;">
       <li><strong>Know the signs of an emergency:</strong> difficulty breathing, uncontrolled bleeding, collapse, repeated vomiting/diarrhea, suspected poisoning, or a bloated/distended abdomen all warrant an immediate vet call.</li>
@@ -440,20 +466,24 @@
       <li><strong>Heatstroke:</strong> excessive panting, drooling, and lethargy in warm weather are early signs &mdash; move to shade/AC, offer water, and call your vet. Never leave a pet in a parked car, even briefly.</li>
       <li><strong>Minor cuts or limping:</strong> gently clean with saline, keep them calm and off the affected area, and call your vet if it doesn't improve within a day or seems painful.</li>
     </ul>
-  </div>
+    </div>
+  </details>
 
-  <div style="margin-bottom:32px;">
-    <h2 style="color:var(--coral-deep); font-size:1.4rem; margin:0 0 10px;">Seasonal Checks</h2>
+  <details class="lr-item" id="seasonal">
+    <summary><span class="lr-icon" aria-hidden="true">🍂</span><span class="lr-title">Seasonal Checks</span><svg class="lr-chev" aria-hidden="true"><use href="#pawcloud"/></svg></summary>
+    <div class="lr-body">
     <ul style="margin:0; padding-left:20px; color:var(--ink); line-height:1.7;">
       <li><strong>Spring:</strong> flea/tick prevention restart, check for foxtails and burrs on walks, watch for seasonal allergies (itching, paw licking).</li>
       <li><strong>Summer:</strong> hot pavement can burn paw pads &mdash; the 7-second hand test (hold your palm on the pavement; if it's too hot for you, it's too hot for them) is a good rule of thumb. Extra water on walks, shade breaks, and heatstroke awareness matter most this season.</li>
       <li><strong>Fall:</strong> check antifreeze isn't accessible in garages (it's toxic and smells sweet to pets), watch for mushrooms after rain on walks, and start transitioning to any cold-weather gear early.</li>
       <li><strong>Winter:</strong> paw balm or booties for ice/salt on sidewalks, wipe paws after walks to remove de-icing chemicals, and shorten outdoor time in extreme cold &mdash; watch for shivering or reluctance to walk as signs it's too cold.</li>
     </ul>
-  </div>
+    </div>
+  </details>
 
-  <div style="margin-bottom:32px;">
-    <h2 style="color:var(--coral-deep); font-size:1.4rem; margin:0 0 10px;">Pet-Friendly Areas Nearby</h2>
+  <details class="lr-item" id="areas">
+    <summary><span class="lr-icon" aria-hidden="true">🐾</span><span class="lr-title">Pet-Friendly Areas Nearby</span><svg class="lr-chev" aria-hidden="true"><use href="#pawcloud"/></svg></summary>
+    <div class="lr-body">
     <ul style="margin:0; padding-left:20px; color:var(--ink); line-height:1.7;">
       <li><strong>Standley Lake Regional Park</strong> &mdash; trails, open fields, and a swimming area for dogs, right in the neighborhood.</li>
       <li><strong>Broomfield County Commons Dog Park</strong> &mdash; fully fenced, separate large/small dog areas, agility equipment.</li>
@@ -463,10 +493,12 @@
       <li><strong>Big Dry Creek Trail &amp; Dog Park</strong> (Westminster) &mdash; miles of trail plus a fully-fenced off-leash park with water access.</li>
     </ul>
     <p style="margin:10px 0 0; color:var(--ink-soft); font-size:0.85rem;">Always double-check current leash rules and hours before visiting &mdash; they can change seasonally.</p>
-  </div>
+    </div>
+  </details>
 
-  <div style="margin-bottom:32px;">
-    <h2 style="color:var(--coral-deep); font-size:1.4rem; margin:0 0 10px;">Local Pet Shops We Love</h2>
+  <details class="lr-item" id="shops">
+    <summary><span class="lr-icon" aria-hidden="true">🛍️</span><span class="lr-title">Local Pet Shops We Love</span><svg class="lr-chev" aria-hidden="true"><use href="#pawcloud"/></svg></summary>
+    <div class="lr-body">
     <p style="margin:0 0 10px; color:var(--ink-soft); font-size:0.9rem;">Supporting local, independently-owned businesses whenever we can.</p>
     <ul style="margin:0; padding-left:20px; color:var(--ink); line-height:1.7;">
       <li><strong>Paw Wares</strong> (Broomfield) &mdash; locally-owned pet supply store with a self-serve dog wash and full-service grooming.</li>
@@ -475,17 +507,21 @@
       <li><strong>Dingo's Natural Pet</strong> (serving Westminster, Broomfield, Arvada) &mdash; family-owned, natural pet food, grooming, and self-serve dog wash.</li>
       <li><strong>Chuck &amp; Don's Pet Food &amp; Supplies</strong> (Westminster) &mdash; natural pet food and supplies with a loyalty rewards program.</li>
     </ul>
-  </div>
+    </div>
+  </details>
 
-  <div>
-    <h2 style="color:var(--coral-deep); font-size:1.4rem; margin:0 0 10px;">Specialty Dog Trainers</h2>
+  <details class="lr-item" id="trainers">
+    <summary><span class="lr-icon" aria-hidden="true">🎾</span><span class="lr-title">Specialty Dog Trainers</span><svg class="lr-chev" aria-hidden="true"><use href="#pawcloud"/></svg></summary>
+    <div class="lr-body">
     <p style="margin:0 0 10px; color:var(--ink-soft); font-size:0.9rem;">Training isn't just obedience &mdash; nose work, barn hunt, dock diving, and agility are all great outlets for high-energy or scent-driven dogs of any breed.</p>
     <ul style="margin:0; padding-left:20px; color:var(--ink); line-height:1.7;">
       <li><strong>Dog Dynamix</strong> (Denver metro) &mdash; founded by Lisa Lucero; obedience, agility, nose work, dock diving, and barn hunt, alongside more advanced sport work.</li>
       <li><strong>In Good Paws Dog Training</strong> (serving Broomfield, Westminster, Erie, Arvada) &mdash; positive-reinforcement training with a focus on nose work, private and group classes.</li>
     </ul>
-    <p style="margin:10px 0 0; color:var(--ink-soft); font-size:0.85rem;">Know a great local spot, shop, or trainer we should add? <a href="mailto:community@sunpatchpetcare.com" style="color:var(--coral-deep); font-weight:700;">Let us know</a>.</p>
-  </div>
+    </div>
+  </details>
+
+<p style="margin:22px 0 0; text-align:center; color:var(--ink-soft); font-size:0.85rem;">Know a great local spot, shop, or trainer we should add? <a href="mailto:community@sunpatchpetcare.com" style="color:var(--coral-deep); font-weight:700;">Let us know</a>.</p>
 
 </div>
 <div class="gingham"></div>
@@ -494,7 +530,7 @@
     <img src="ShorthandLogo.png" alt="Sun Patch Pet Care paw mark">
   </div>
   <p class="footer-tagline">A little sunshine while you're away.</p>
-  &copy; 2026 Sun Patch Pet Care &middot; Broomfield, Colorado
+  &copy; 2026 Sun Patch Pet Care
 </footer>
 <script>
   document.addEventListener('click', function(e){
